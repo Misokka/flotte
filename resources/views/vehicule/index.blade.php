@@ -13,7 +13,7 @@ table {
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('FlexiFleet') }}
         </h2>
     </x-slot>
 
@@ -26,7 +26,7 @@ table {
                           <th>Marque</th>
                           <th>Model</th>
                           <th>Dernière maintenance</th>
-                          <th>Nombre de kilométre</th>
+                          <th>Nombre de kilomètres</th>
                           <th>Numéro de série</th>
                           <th>Action</th>
                         </tr>
