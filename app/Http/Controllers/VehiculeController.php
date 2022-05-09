@@ -70,7 +70,6 @@ class VehiculeController extends Controller
         $vehicule = Vehicule::findOrFail($id);
         $vehicule->delete();
 
-
-        return response()->redirectToRoute('dashboard.vehicule.index');
+        return response()->redirectToRoute('dashboard.vehicule.index')->with('success', 'Voiture supprimer avec succèss');
      }
 }

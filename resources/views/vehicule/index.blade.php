@@ -41,11 +41,9 @@ table {
                             <a href="{{ route('dashboard.vehicule.edit', ['id' => $vehicul->id]) }}">Modifier</a>
                         <form action="{{ route('dashboard.vehicule.delete', ['id' => $vehicul->id]) }}" method="post">
                             @csrf
-                            @method('delete')
-                            <a href="dashboard.vehicule.delete">
-                                <button href="">Supprimer</button>
-                            </a>
-                        <form>
+                            @method('DELETE')
+                                <button type="submit">Supprimer</button>
+                        </form>
                           </td>
                         </tr>
                     @endforeach

@@ -24,4 +24,22 @@ class UserController extends Controller
 
         return view('user/show', ['user' => $user]);
     }
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request)
+    {
+        $user = User::create([
+            'lastname' => $request->lastname,
+            'firstname' => $request->firstname,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => $request->role_id,
+        ]);
+
+        return response()->redirectToRoute('dashboard.user.index');
+    }
 }

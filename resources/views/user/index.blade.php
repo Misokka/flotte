@@ -13,8 +13,10 @@
                     <ul>
                         @foreach ($users as $user)
                             <li><a href="{{ route('dashboard.user.show', ['id' => $user->id]) }}">{{ $user->lastname }} {{ $user->firstname }}</a></li>
+
                         @endforeach
                     </ul>
+                    <a href="{{ route('dashboard.user.create') }}">Ajouter un utilisateur</a>
                 </div>
             </div>
         </div>
