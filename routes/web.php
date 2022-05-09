@@ -28,6 +28,7 @@ Route::prefix('/dashboard')->name('dashboard.')->middleware(['auth'])->group(fun
     Route::post('/vehicule/store', [VehiculeController::class, 'store'])->name("vehicule.store");
     Route::get('/vehicule/edit/{id}', [VehiculeController::class, 'edit'])->name("vehicule.edit");
     Route::put('/vehicule/update/{id}', [VehiculeController::class, 'update'])->name("vehicule.update");
+    Route::put('/vehicule/update/{id}', [VehiculeController::class, 'update'])->name("vehicule.update");
     Route::delete('/vehicule/delete/{id}', [VehiculeController::class, 'delete'])->name("vehicule.delete");
 });
 
