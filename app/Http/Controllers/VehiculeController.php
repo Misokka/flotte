@@ -64,4 +64,13 @@ class VehiculeController extends Controller
 
         return response()->redirectToRoute('dashboard.vehicule.index');
      }
+
+     public function delete($id)
+    {
+        $vehicule = Vehicule::findOrFail($id);
+        $vehicule->delete();
+
+
+        return response()->redirectToRoute('dashboard.vehicule.index');
+     }
 }
