@@ -42,4 +42,31 @@ class UserController extends Controller
 
         return response()->redirectToRoute('dashboard.user.index');
     }
+
+    public function update(User $id, Request $request)
+    {
+
+       $validate = $request->validate([
+           'lastname' => 'string',
+           'firstname' => 'string',
+           'email' => 'string',
+       ]);
+
+       $id->update([
+           'lastname' => $validate['lastname'],
+           'firstname' => $validate['firstname'],
+           'email' => $validate['email'],
+       ]);
+
+       return response()->redirectToRoute('dashboard.user.index');
+    }
+
+    public function delete($id)
+    {
+        $users = User::findOrFail($id);
+        $users->delete();
+
+
+        return response()->redirectToRoute('dashboard.user.index');
+    }
 }
