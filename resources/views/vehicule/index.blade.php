@@ -45,7 +45,7 @@ table {
                             <a href="dashboard.vehicule.delete">
                                 <button href="">Supprimer</button>
                             </a>
-                        <form>
+                        </form>
                           </td>
                         </tr>
                     @endforeach

@@ -24,4 +24,54 @@ class UserController extends Controller
 
         return view('user/show', ['user' => $user]);
     }
+
+public function create()
+{
+    return view('user/create');
+}
+
+public function store(Request $request)
+{
+    $users = User::create([
+        'lastname' => $request->lastname,
+        'firstname' => $request->firstname,
+        'email' => $request->email,
+    ]);
+
+    return response()->redirectToRoute('dashboard.userykozey@example.com.index');
+}
+
+public function edit($id)
+{
+    $users = User::find($id);
+
+    return view('user.edit', ['users' => $users]);
+ }
+
+ public function update(User $id, Request $request)
+ {
+
+    $validate = $request->validate([
+        'lastname' => 'string',
+        'firstname' => 'string',
+        'email' => 'string',
+    ]);
+
+    $id->update([
+        'lastname' => $validate['lastname'],
+        'firstname' => $validate['firstname'],
+        'email' => $validate['email'],
+    ]);
+
+    return response()->redirectToRoute('dashboard.user.index');
+ }
+
+ public function delete($id)
+{
+    $users = User::findOrFail($id);
+    $users->delete();
+
+
+    return response()->redirectToRoute('dashboard.user.index');
+ }
 }
