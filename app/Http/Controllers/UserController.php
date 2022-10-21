@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
+        Auth::user();
         $users = User::all();
 
         return view('user/index', [
@@ -41,6 +43,13 @@ class UserController extends Controller
         ]);
 
         return response()->redirectToRoute('dashboard.user.index');
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('user.edit', ['user' => $user]);
     }
 
     public function update(User $id, Request $request)

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculeController;
+use App\Http\Controllers\FournisseurController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {return view('dashboard'); });
+Route::get('/', function () {
+    if (Auth::user()) {
+        return redirect()->route('dashboard');;
+    } else {
+        return redirect()->route('login');
+    }
+});
+
 Route::get('/dashboard', function () {return view('dashboard'); })->middleware(['auth'])->name('dashboard');
 
 Route::prefix('/dashboard')->name('dashboard.')->middleware(['auth'])->group(function (){
@@ -36,6 +45,13 @@ Route::prefix('/dashboard')->name('dashboard.')->middleware(['auth'])->group(fun
     Route::put('/vehicule/update/{id}', [VehiculeController::class, 'update'])->name("vehicule.update");
     Route::put('/vehicule/update/{id}', [VehiculeController::class, 'update'])->name("vehicule.update");
     Route::delete('/vehicule/delete/{id}', [VehiculeController::class, 'delete'])->name("vehicule.delete");
+    Route::get('/fournisseur', [FournisseurController::class, 'index'])->name("fournisseur.index");
+    Route::get('/fournisseur/create', [FournisseurController::class, 'create'])->name("fournisseur.create");
+    Route::post('/fournisseur/store', [FournisseurController::class, 'store'])->name("fournisseur.store");
+    Route::get('/fournisseur/edit/{id}', [FournisseurController::class, 'edit'])->name("fournisseur.edit");
+    Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'])->name("fournisseur.update");
+    Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'])->name("fournisseur.update");
+    Route::delete('/fournisseur/delete/{id}', [FournisseurController::class, 'delete'])->name("fournisseur.delete");
 });
 
 require __DIR__.'/auth.php';

@@ -41,7 +41,7 @@ class VehiculeController extends Controller
         $vehicule = Vehicule::find($id);
 
         return view('vehicule.edit', ['vehicule' => $vehicule]);
-     }
+    }
 
      public function update(Vehicule $id, Request $request)
      {

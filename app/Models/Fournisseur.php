@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Fournisseur extends Model
 {
     use HasFactory;
 
-    protected $table = 'status';
+    protected $table = 'fournisseur';
+    protected $fillable = [
+        'label',
+    ];
     public $timestamps = false;
-
-    public function user()
-    {
-        return $this->hasMany(User::class, 'status_id');
-    }
 }
