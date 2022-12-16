@@ -25,23 +25,8 @@ table {
                         <tr>
                           <th>lastname</th>
                         </tr>
-                    @foreach ($fournisseurs as $fournisseur)
-                        <tr>
-                          <td>{{ $fournisseur->label }}</td>
-
-                          <td>
-                            <a href="{{ route('dashboard.fournisseur.edit', ['id' => $fournisseur->id]) }}">Modifier</a>
-                        <form action="{{ route('dashboard.fournisseur.delete', ['id' => $fournisseur->id]) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <a href="dashboard.fournisseur.delete">
-                                <button href="">Supprimer</button>
-                            </a>
-                        </form>
-                        </tr>
-                    @endforeach
                     </table>
-                    <a href="{{ route('dashboard.fournisseur.create') }}">Ajouter un fournisseur</a>
+                    <a href="{{ route('dashboard.commande.create') }}">Passer une commande</a>
 
                 </div>
             </div>

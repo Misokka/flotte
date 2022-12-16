@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{ route('dashboard.fournisseur.store') }}" method="post">
                         @csrf
-                        <input type="text" name="lastname" placeholder="Nom">
+                        <input type="text" name="label" placeholder="Nom">
                         <input type="submit" value="Valider">
                     </form>
                 </div>

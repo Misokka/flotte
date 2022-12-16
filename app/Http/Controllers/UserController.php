@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -34,11 +35,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+
         $user = User::create([
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make(STR::random(8)),
             'role_id' => $request->role_id,
         ]);
 

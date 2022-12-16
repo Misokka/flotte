@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
 use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,7 @@ class FournisseurController extends Controller
         $fournisseur = Fournisseur::all();
 
         return view('fournisseur/index', [
-            'fournisseur' => $fournisseur
+            'fournisseurs' => $fournisseur
         ]);
     }
 
@@ -24,9 +23,9 @@ class FournisseurController extends Controller
 
     public function store(Request $request)
     {
-        $fournisseur = Fournisseur::create([
-            'label' => $request->label,
-        ]);
+        $fournisseur = new Fournisseur();
+        $fournisseur->label = $request->label;
+        $fournisseur->save();
 
         return response()->redirectToRoute('dashboard.fournisseur.index');
     }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculeController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\AgenceController;
+use App\Http\Controllers\CommandeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +54,16 @@ Route::prefix('/dashboard')->name('dashboard.')->middleware(['auth'])->group(fun
     Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'])->name("fournisseur.update");
     Route::put('/fournisseur/update/{id}', [FournisseurController::class, 'update'])->name("fournisseur.update");
     Route::delete('/fournisseur/delete/{id}', [FournisseurController::class, 'delete'])->name("fournisseur.delete");
+    Route::get('/agence', [AgenceController::class, 'index'])->name("agence.index");
+    Route::get('/agence/create', [AgenceController::class, 'create'])->name("agence.create");
+    Route::post('/agence/store', [AgenceController::class, 'store'])->name("agence.store");
+    Route::get('/agence/edit/{id}', [AgenceController::class, 'edit'])->name("agence.edit");
+    Route::put('/agence/update/{id}', [AgenceController::class, 'update'])->name("agence.update");
+    Route::put('/agence/update/{id}', [AgenceController::class, 'update'])->name("agence.update");
+    Route::delete('/agence/delete/{id}', [AgenceController::class, 'delete'])->name("agence.delete");
+    Route::get('/commande', [CommandeController::class, 'index'])->name("commande.index");
+    Route::get('/commande/create', [CommandeController::class, 'create'])->name("commande.create");
+    Route::post('/commande/store', [CommandeController::class, 'store'])->name("commande.store");
 });
 
 require __DIR__.'/auth.php';

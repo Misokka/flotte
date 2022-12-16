@@ -11,7 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('dashboard.vehicule.index') }}">Vehicule</a> </br>
                     <a href="{{ route('dashboard.user.index') }}">Liste d'utilisateur</a> </br>
-                    <a href="{{ route('dashboard.fournisseur.index') }}">Liste de fournisseur</a>
+                    <a href="{{ route('dashboard.fournisseur.index') }}">Liste de fournisseur</a> </br>
+                    <a href="{{ route('dashboard.agence.index') }}">Liste d'agence</a> </br>
+                    <a href="{{ route('dashboard.commande.index') }}">Passer une commande</a>
                 </div>
             </div>
         </div>

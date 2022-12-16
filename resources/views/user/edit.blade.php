@@ -21,10 +21,9 @@
                     <form action="{{ route('dashboard.user.update', ['id' => $user->id]) }}" method="post">
                         @csrf
                         @method('PUT')
-                        <input type="text" name="Nom" placeholder="Nom" value="{{ $user->lastname }}">
-                        <input type="text" name="Prenom" placeholder="Prenom" value="{{ $user->firstname }}">
-                        <input type="text" name="Email" placeholder="Email" value="{{ $user->email }}">
-                        <input type="text" name="Mot de passe" placeholder="Mot de passe" value="{{ $user->password }}">
+                        <input type="text" name="lastname" placeholder="Nom" value="{{ $user->lastname }}">
+                        <input type="text" name="firstname" placeholder="Prenom" value="{{ $user->firstname }}">
+                        <input type="text" name="email" placeholder="Email" value="{{ $user->email }}">
                         <button type="submit">Valider</button>
                     </form>
                 </div>

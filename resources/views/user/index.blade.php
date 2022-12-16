@@ -27,7 +27,6 @@ table {
                           <th>firstname</th>
                           <th>email</th>
                           <th>Action</th>
-                          <th>role</th>
                         </tr>
                     @foreach ($users as $user)
                         <tr>

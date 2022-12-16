@@ -18,10 +18,10 @@
                         </ul>
                     </div>
                 @endif
-                    <form action="{{ route('dashboard.fournisseur.update', ['id' => $fournisseur->id]) }}" method="post">
+                    <form action="{{ route('dashboard.agence.update', ['id' => $agence->id]) }}" method="post">
                         @csrf
                         @method('PUT')
-                        <input type="text" name="label" placeholder="Nom" value="{{ $fournisseur->label }}">
+                        <input type="text" name="label" placeholder="Nom" value="{{ $agence->label }}">
                         <button type="submit">Valider</button>
                     </form>
                 </div>

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->dateTime('last_maintenance');
             $table->integer('nb_kilometrage');
             $table->integer('nb_serie');
+            $table->foreignId('status_id')->nullable()->constrained('status');
+            $table->foreignId('fournisseur_id')->nullable()->constrained('fournisseur');
             $table->timestamps();
-            $table->foreignId('users_id')->nullable()->constrained('users');
-            $table->foreignId('status_id')->constrained('status');
         });
     }
 
