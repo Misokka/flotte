@@ -12,9 +12,13 @@ class CommandeController extends Controller
     public function index()
     {
         $commande = Commande::all();
+        $vehicule = Vehicule::all();
+        $users = User::all();
 
         return view('commande/index', [
-            'commandes' => $commande
+            'commandes' => $commande,
+            'vehicules' => $vehicule,
+            'users' => $users
         ]);
     }
 

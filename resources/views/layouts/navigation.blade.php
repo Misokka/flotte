@@ -13,7 +13,22 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Accueil') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.vehicule.index')" :active="request()->routeIs('dashboard.vehicule.index')">
+                        {{ __('Vehicules') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.user.index')" :active="request()->routeIs('dashboard.user.index')">
+                        {{ __('Utilisateur') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.fournisseur.index')" :active="request()->routeIs('dashboard.fournisseur.index')">
+                        {{ __('Fournisseur') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.agence.index')" :active="request()->routeIs('dashboard.agence.index')">
+                        {{ __('Agence') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.commande.index')" :active="request()->routeIs('dashboard.commande.index')">
+                        {{ __('Commande') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -63,6 +78,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>

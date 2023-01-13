@@ -22,9 +22,24 @@ table {
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table cellpadding="60.5" cellspacing="30">
-                        <tr>
-                          <th>lastname</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>N° de la commande</th>
+                                <th>Utilisateur</th>
+                                <th>Marque du véhicule</th>
+                                <th>Model du véhicule</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($commandes as $commande)
+                                <tr>
+                                    <td>{{ $commande->id }}</td>
+                                    <td>{{ $commande->user->firstname }} {{ $commande->user->lastname }}</td>
+                                    <td>{{ $commande->vehicule->marque }}</td>
+                                    <td>{{ $commande->vehicule->model }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                     <a href="{{ route('dashboard.commande.create') }}">Passer une commande</a>
 

@@ -38,19 +38,18 @@ table {
                           <td>{{ $vehicul->nb_kilometrage }} Km</td>
                           <td>{{ $vehicul->nb_serie }}</td>
                           <td>
-                            <a href="{{ route('dashboard.vehicule.edit', ['id' => $vehicul->id]) }}">Modifier</a>
+                            <a class="btn btn-light" role="button" href="{{ route('dashboard.vehicule.edit', ['id' => $vehicul->id]) }}">Modifier</a>
                         <form action="{{ route('dashboard.vehicule.delete', ['id' => $vehicul->id]) }}" method="post">
                             @csrf
                             @method('DELETE')
-                                <button type="submit">Supprimer</button>
+                                <button class="btn btn-light" type="submit">Supprimer</button>
                         </form>
                           </td>
                         </tr>
                     @endforeach
                     </table>
-                    <a href="{{ route('dashboard.vehicule.create') }}">Ajouter un vehicule</a>
-
-                </div>
+                </br>
+                    <a class="btn btn-light" role="button" href="{{ route('dashboard.vehicule.create') }}">Ajouter un vehicule</a>
             </div>
         </div>
     </div>

@@ -17,6 +17,10 @@ class Commande extends Model
     ];
 
     public function vehicule() {
-        return $this->hasOne(Vehicule::class);
+        return $this->hasOne(Vehicule::class, 'id', 'vehicule_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 }
