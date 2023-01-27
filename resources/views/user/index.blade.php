@@ -19,6 +19,10 @@ table {
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <center>
+                <a class="btn btn-light" role="button" href="{{ route('dashboard.vehicule.create') }}">Ajouter un vehicule</a>
+            </center>
+            </br>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table cellpadding="60.5" cellspacing="30">
@@ -26,6 +30,7 @@ table {
                           <th>lastname</th>
                           <th>firstname</th>
                           <th>email</th>
+                          <th>Role</th>
                           <th>Action</th>
                         </tr>
                     @foreach ($users as $user)
@@ -33,12 +38,13 @@ table {
                           <td>{{ $user->lastname }}</td>
                           <td>{{ $user->firstname }}</td>
                           <td>{{ $user->email }}</td>
+                          <td>{{ $user->roles_id }}</td>
                           <td>
-                            <a href="{{ route('dashboard.user.edit', ['id' => $user->id]) }}">Modifier</a>
+                            <a class="btn btn-light" role="button" href="{{ route('dashboard.user.edit', ['id' => $user->id]) }}">Modifier</a>
                         <form action="{{ route('dashboard.user.delete', ['id' => $user->id]) }}" method="post">
                             @csrf
                             @method('delete')
-                            <a href="dashboard.user.delete">
+                            <a class="btn btn-light" role="button" href="dashboard.user.delete">
                                 <button href="">Supprimer</button>
                             </a>
                         </form>
@@ -46,8 +52,6 @@ table {
                         </tr>
                     @endforeach
                     </table>
-                    <a href="{{ route('dashboard.user.create') }}">Ajouter un users</a>
-
                 </div>
             </div>
         </div>
