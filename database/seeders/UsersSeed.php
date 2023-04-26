@@ -21,7 +21,7 @@ class UsersSeed extends Seeder
 
             $users = new User();
             $users->lastname = "Jeremy";
-            $users->firstname = "Caron-Labalette";
+            $users->firstname = "$i . Caron";
             $users->email = $i . "jeremy@gmail.com";
             $users->password = "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi";
             $users->remember_token = Str::random(10);

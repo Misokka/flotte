@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('nb_kilometrage');
             $table->integer('nb_serie');
             $table->foreignId('status_id')->nullable()->constrained('status');
-            $table->foreignId('fournisseur_id')->nullable()->constrained('fournisseur');
+            $table->foreignId('fournisseur_id')->nullable()->constrained('fournisseur')->onDelete('cascade');
+            $table->foreignId('agence_id')->nullable()->constrained('agence')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -12,8 +12,18 @@ class Agence extends Model
     protected $table = 'agence';
     protected $fillable = [
         'label',
-        'users_id',
-        'vehicule_id'
+        'users_id'
     ];
     public $timestamps = false;
+
+    public function user() {
+        return $this->belongsTo(User::class, 'users_id', 'id');
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicule::class);
+    }
+
+
 }

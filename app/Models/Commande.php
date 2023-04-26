@@ -10,8 +10,13 @@ class Commande extends Model
     use HasFactory;
 
     protected $table = 'commande';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
+        'lastname',
+        'firstname',
+        'email',
+        'dateDebut',
+        'dateFin',
         'users_id',
         'vehicule_id'
     ];

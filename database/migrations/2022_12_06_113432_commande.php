@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('commande', function (Blueprint $table) {
             $table->id();
+            $table->string('lastname');
+            $table->string('firstname');
+            $table->string('email');
+            $table->date('dateDebut');
+            $table->date('dateFin');
             $table->timestamps();
             $table->foreignId('users_id')->nullable()->constrained('users');
-            $table->foreignId('vehicule_id')->nullable()->constrained('vehicule');
+            $table->foreignId('vehicule_id')->nullable()->constrained('vehicule')->onDelete('cascade');
         });
     }
 

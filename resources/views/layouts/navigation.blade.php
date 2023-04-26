@@ -6,30 +6,53 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <img src="{{ asset('img/flexifleet.png')}}" width="80px" height="80px"/>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard.index')">
                         {{ __('Accueil') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.vehicule.index')" :active="request()->routeIs('dashboard.vehicule.index')">
-                        {{ __('Vehicules') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard.user.index')" :active="request()->routeIs('dashboard.user.index')">
-                        {{ __('Utilisateur') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard.fournisseur.index')" :active="request()->routeIs('dashboard.fournisseur.index')">
-                        {{ __('Fournisseur') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard.agence.index')" :active="request()->routeIs('dashboard.agence.index')">
-                        {{ __('Agence') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard.commande.index')" :active="request()->routeIs('dashboard.commande.index')">
-                        {{ __('Commande') }}
-                    </x-nav-link>
+                    <!-- admin & gestionnaire d'agence -->
+                    @if (Auth::user()->roles_id == 1 || Auth::user()->roles_id == 4)
+                        <x-nav-link :href="route('dashboard.vehicule.index')" :active="request()->routeIs('dashboard.vehicule.index')">
+                            {{ __('Vehicules') }}
+                        </x-nav-link>
+                    @endif
+                    {{-- admin & rh --}}
+                    @if (Auth::user()->roles_id == 1 || Auth::user()->roles_id == 2)
+                        <x-nav-link :href="route('dashboard.user.index')" :active="request()->routeIs('dashboard.user.index')">
+                            {{ __('Utilisateur') }}
+                        </x-nav-link>
+                    @endif
+                    {{-- admin & gestionnaire fournisseur  --}}
+                    @if (Auth::user()->roles_id == 1 || Auth::user()->roles_id == 5)
+                        <x-nav-link :href="route('dashboard.fournisseur.index')" :active="request()->routeIs('dashboard.fournisseur.index')">
+                            {{ __('Fournisseur') }}
+                        </x-nav-link>
+                    @endif
+                    {{-- admin & gestionnaire d'agence --}}
+                    @if (Auth::user()->roles_id == 1 || Auth::user()->roles_id == 4)
+                        <x-nav-link :href="route('dashboard.agence.index')" :active="request()->routeIs('dashboard.agence.index')">
+                            {{ __('Agence') }}
+                        </x-nav-link>
+                    @endif
+                    {{-- admin & gestionnaire de commande  --}}
+                    @if (Auth::user()->roles_id == 1 || Auth::user()->roles_id == 6)
+                        <x-nav-link :href="route('dashboard.commande.index')" :active="request()->routeIs('dashboard.commande.index')">
+                            {{ __('Commande') }}
+                        </x-nav-link>
+                    @endif
+                    {{-- admin & chef d'agence  --}}
+                    @if (Auth::user()->roles_id == 3)
+                        <x-nav-link :href="route('dashboard.chefagence.index')" :active="request()->routeIs('dashboard.chefagence.index')">
+                            {{ __('Mon agence') }}
+                        </x-nav-link>
+                    @endif
+
+
                 </div>
             </div>
 
@@ -56,7 +79,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Deconnexion') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

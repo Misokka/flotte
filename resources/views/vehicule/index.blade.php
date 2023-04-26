@@ -13,47 +13,63 @@ table {
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('FlexiFleet') }}
+            {{ __('Vehicule') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <center>
-            <a class="btn btn-light" role="button" href="{{ route('dashboard.vehicule.create') }}">Ajouter un vehicule</a>
-            </center>
-        </br>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+          <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Liste des véhicules</h2>
+            <a class="btn btn-light" href="{{ route('dashboard.vehicule.create') }}">Ajouter un véhicule</a>
+          </div>
+          <div class="mt-6 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <table class="w-full table-auto">
+              <thead class="bg-gray-200">
+                <tr>
+                  <th class="px-4 py-2 text-center">Marque</th>
+                  <th class="px-4 py-2 text-center">Modèle</th>
+                  <th class="px-4 py-2 text-center">Dernière maintenance</th>
+                  <th class="px-4 py-2 text-center">Nombre de kilomètres</th>
+                  <th class="px-4 py-2 text-center">Numéro de série</th>
+                  <th class="px-4 py-2 text-center">Statut</th>
+                  <th class="px-4 py-2 text-center">Agence</th>
+                  <th class="px-4 py-2 text-center">Fournisseur</th>
 
-                    <table cellpadding="60.5" cellspacing="30">
-                        <tr>
-                          <th>Marque</th>
-                          <th>Model</th>
-                          <th>Dernière maintenance</th>
-                          <th>Nombre de kilomètres</th>
-                          <th>Numéro de série</th>
-                          <th>Action</th>
-                        </tr>
-                    @foreach ($vehicule as $vehicul)
-                        <tr>
-                          <td>{{ $vehicul->marque }}</td>
-                          <td>{{ $vehicul->model }}</td>
-                          <td>{{ \Carbon\Carbon::parse($vehicul->last_maintenance)->format('d/m/Y h:i') }}</td>
-                          <td>{{ $vehicul->nb_kilometrage }} Km</td>
-                          <td>{{ $vehicul->nb_serie }}</td>
-                          <td>
-                            <a class="btn btn-light" role="button" href="{{ route('dashboard.vehicule.edit', ['id' => $vehicul->id]) }}">Modifier</a>
-                        <form action="{{ route('dashboard.vehicule.delete', ['id' => $vehicul->id]) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                                <button class="btn btn-light" type="submit">Supprimer</button>
-                        </form>
-                          </td>
-                        </tr>
-                    @endforeach
-                    </table>
-            </div>
+                  <th class="px-4 py-2 text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @if ($vehicule->isEmpty())
+                  <tr>
+                    <td colspan="9" class="px-4 py-2 text-center">Aucun véhicule à afficher</td>
+                  </tr>
+                @else
+                @foreach ($vehicule as $vehicul)
+                  <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2 text-center">{{ $vehicul->marque }}</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->model }}</td>
+                    <td class="px-4 py-2 text-center">{{ \Carbon\Carbon::parse($vehicul->last_maintenance)->format('d/m/Y h:i') }}</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->nb_kilometrage }} Km</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->nb_serie }}</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->status->label }}</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->agence->label }}</td>
+                    <td class="px-4 py-2 text-center">{{ $vehicul->fournisseur->label }}</td>
+                    <td class="text-center">
+                      <a class="btn btn-light btn-block" role="button" href="{{ route('dashboard.vehicule.edit', ['id' => $vehicul->id]) }}">Modifier</a>
+                      <form action="{{ route('dashboard.vehicule.delete', ['id' => $vehicul->id]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-light btn-block" type="submit">Supprimer</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
+                @endif
+              </tbody>
+            </table>
+          </div>
         </div>
-    </div>
+      </div>
+
 </x-app-layout>

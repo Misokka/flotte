@@ -16,27 +16,33 @@ class RolesSeeder extends Seeder
     public function run()
     {
         $admin = new Roles();
-        $admin->label = "Admin";
+        $admin->name = "Admin";
+        $admin->guard_name = "Admin";
         $admin->save();
 
         $rh = new Roles();
-        $rh->label = "RH";
+        $rh->name = "RH";
+        $rh->guard_name = "RH";
         $rh->save();
 
         $chef = new Roles();
-        $chef->label = "ChefAgence";
+        $chef->name = "Chef_d_Agence";
+        $chef->guard_name = "Chef_d_Agence";
         $chef->save();
 
         $gestAgences = new Roles();
-        $gestAgences->label = "GestionnaireAgences";
+        $gestAgences->name = "Gestionnaire_d_Agences";
+        $gestAgences->guard_name = "Gestionnaire_d_Agences";
         $gestAgences->save();
 
         $gestFournisseurs = new Roles();
-        $gestFournisseurs->label = "GestionnaireFournisseurs";
+        $gestFournisseurs->name = "Gestionnaire Fournisseurs";
+        $gestFournisseurs->guard_name = "Gestionnaire Fournisseurs";
         $gestFournisseurs->save();
 
         $gestCommandes = new Roles();
-        $gestCommandes->label = "GestionnaireCommandes";
+        $gestCommandes->name = "Gestionnaire Commandes";
+        $gestCommandes->guard_name = "Gestionnaire Commandes";
         $gestCommandes->save();
     }
 }

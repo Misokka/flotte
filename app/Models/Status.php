@@ -10,6 +10,16 @@ class Status extends Model
     use HasFactory;
 
     protected $table = 'status';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'label',
+    ];
+    
     public $timestamps = false;
 
     public function user()

@@ -14,4 +14,9 @@ class Fournisseur extends Model
         'label',
     ];
     public $timestamps = false;
+
+    public function vehicules()
+    {
+        return $this->hasMany(Vehicule::class);
+    }
 }
